@@ -1,8 +1,40 @@
-	<html>
+<!DOCTYPE html>
+<html>
 <head>
-<title>Cart</title>
+    <title>Cart</title>
+    <link rel="stylesheet" href="cart.css">
 </head>
-<body>
-<script type="text/javascript" src="https://form.jotform.com/jsform/220081309522041"></script>
+
+<body onload="loadCart()">
+
+    <div class="container">
+		<a href="index.html" style="
+    color:#22c55e;
+    text-decoration:none;
+    display:inline-block;
+    margin-bottom:10px;
+">⬅ Continue Shopping</a>
+        <h1>🛒 Your Cart</h1>
+
+        <div id="cart-items"></div>
+
+        <h2 id="total"></h2>
+
+        <button class="checkout-btn" onclick="checkout()">Checkout</button>
+    </div>
+
+    <script src="script.js"></script>
+<div id="payment-modal" class="modal">
+    <div class="modal-content">
+        <h2>💳 Payment</h2>
+
+        <input type="text" placeholder="Card Number">
+        <input type="text" placeholder="Expiry (MM/YY)">
+        <input type="text" placeholder="CVV">
+
+        <button onclick="processPayment()">Pay Now</button>
+        <button onclick="closeModal()">Cancel</button>
+    </div>
+</div>
 </body>
 </html>

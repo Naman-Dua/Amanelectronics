@@ -31,6 +31,21 @@
               <a href="Subscription.html" class="mr-5 hover:text-white">Subscription</a>
               <a href="prime.html" class="mr-5 hover:text-white">prime</a>
           </nav>
+          <span id="user"></span>
+<button onclick="logout()">Logout</button>
+
+<script>
+let user = localStorage.getItem("loggedInUser");
+
+if (user) {
+    document.getElementById("user").innerText = "👤 " + user;
+}
+
+function logout() {
+    localStorage.removeItem("loggedInUser");
+    location.reload();
+}
+</script>
         <a href="cart.html" target="_blank" >
           <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               

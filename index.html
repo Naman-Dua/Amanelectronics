@@ -10,7 +10,61 @@
     <link rel="stylesheet" href="pre.css">
     <title>Aman Electronics V2</title>
 </head>
+<script>
+let user = localStorage.getItem("loggedInUser");
+
+if (user) {
+    document.getElementById("user").innerText = "👤 " + user;
+
+    document.getElementById("loginBtn").style.display = "none";
+    document.getElementById("signupBtn").style.display = "none";
+    document.getElementById("logoutBtn").style.display = "inline-block";
+}
+
+function logout() {
+    localStorage.removeItem("loggedInUser");
+    location.reload();
+}
+</script>
 <body>
+  <!-- 🔥 USER AUTH BAR -->
+<div id="auth-bar" style="
+    display:flex;
+    justify-content:flex-end;
+    gap:10px;
+    padding:10px 20px;
+    background: rgba(0,0,0,0.7);
+">
+
+    <span id="user" style="color:white;"></span>
+
+    <a href="login.html" id="loginBtn" style="
+        color:white;
+        text-decoration:none;
+        background:#22c55e;
+        padding:5px 10px;
+        border-radius:5px;
+    ">Login</a>
+
+    <a href="signup.html" id="signupBtn" style="
+        color:white;
+        text-decoration:none;
+        background:#3b82f6;
+        padding:5px 10px;
+        border-radius:5px;
+    ">Sign Up</a>
+
+    <button onclick="logout()" id="logoutBtn" style="
+        display:none;
+        background:red;
+        color:white;
+        border:none;
+        padding:5px 10px;
+        border-radius:5px;
+        cursor:pointer;
+    ">Logout</button>
+
+</div>
   <div class="loader">
     <img src="loadinfo.net.gif" alt="">
   </div>
@@ -30,6 +84,7 @@
             <a href="contact.us.html" class="mr-5 hover:text-white">Contact Us</a>
               <a href="Subscription.html" class="mr-5 hover:text-white">Subscription</a>
               <a href="prime.html" class="mr-5 hover:text-white">Prime</a>
+              
           </nav>
           <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
