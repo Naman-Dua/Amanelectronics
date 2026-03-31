@@ -3,7 +3,7 @@ function signup() {
     let username = document.getElementById("username").value;
     let password = document.getElementById("password").value;
 
-    fetch("https://aman-render.onrender.com/signup", {
+    fetch("https://aman-renderr.onrender.com/signup", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
@@ -22,7 +22,7 @@ function login() {
     let username = document.getElementById("username").value;
     let password = document.getElementById("password").value;
 
-    fetch("https://aman-render.onrender.com/login", {
+    fetch("https://aman-renderr.onrender.com/login", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
