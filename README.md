@@ -1,77 +1,74 @@
-# ⚡ Aman Electronics (Web App)
+# 🛒 Aman Electronics - Full Stack E-Commerce Website
 
-A modern and responsive **electronics store website** built using frontend technologies.
-This project simulates an online shopping experience for electronic products with a clean UI and intuitive navigation.
+🚀 A modern full-stack e-commerce web application built using **HTML, CSS, JavaScript, Flask, and MongoDB Atlas**.
 
-🔗 **Live Demo:** https://naman-dua.github.io/Amanelectronics/
-
----
-
-## ✨ Features
-
-* 🛒 Browse electronic products
-* 📱 Responsive design (mobile + desktop)
-* 🔍 Product display with structured layout
-* ⚡ Fast and lightweight performance
-* 🎨 Clean and user-friendly interface
+This project started as a basic frontend and has been upgraded into a **complete full-stack system** with authentication, cart, and database integration.
 
 ---
 
-## 🛠️ Tech Stack
+# 🔥 Features
 
-* HTML5
-* CSS3
-* JavaScript
-
----
-
-## 🎯 Project Purpose
-
-This project was built to:
-
-* Practice **frontend development skills**
-* Understand **layout design for e-commerce websites**
-* Improve **UI/UX design thinking**
-* Learn **responsive web design**
+## 🧑‍💻 Authentication System
+- User Signup & Login
+- Backend authentication using Flask
+- Session handling using localStorage
+- Protected routes (cart requires login)
 
 ---
 
-## 🧩 Key Components
-
-* 🏠 Homepage with product listings
-* 📦 Product cards / sections
-* 📱 Responsive layout
-* 🎨 Styled UI elements
-
----
-
-## 🚀 Future Improvements
-
-* 🛒 Add cart functionality
-* 💳 Checkout system
-* 🔐 User authentication (login/signup)
-* 🔍 Product search & filters
-* 🗂️ Categories (Mobiles, Laptops, Accessories, etc.)
-* 💾 Backend integration (database)
+## 🛍️ Shopping Cart
+- Add to cart functionality
+- User-specific cart (stored in database)
+- Dynamic cart UI
+- Total price calculation
 
 ---
 
-## 📂 How to Run Locally
-
-```bash
-git clone https://github.com/naman-dua/Amanelectronics.git
-cd Amanelectronics
-open index.html
-```
+## 💳 Payment System (Demo)
+- Dummy payment UI (safe for demo)
+- Payment modal with animation
+- Success screen simulation
 
 ---
 
-## 💡 Author
-
-Made with ❤️ by Naman Dua
+## 🎨 UI / UX
+- Glassmorphism design
+- Smooth animations & transitions
+- Responsive layout
+- Modern login/signup pages
 
 ---
 
-## ⭐ Support
+## ☁️ Database Integration
+- Cloud database using MongoDB Atlas
+- Stores:
+  - Users
+  - Cart items
+- Persistent data (no loss after refresh)
 
-If you like this project, consider giving it a star ⭐ on GitHub!
+---
+
+## 🌐 Backend (Flask API)
+- REST API endpoints:
+  - `/signup`
+  - `/login`
+  - `/add_to_cart`
+  - `/get_cart`
+- CORS enabled for frontend connection
+
+---
+
+# 🧠 Tech Stack
+
+### Frontend
+- HTML5
+- CSS3 (Modern UI + Animations)
+- JavaScript (Vanilla JS)
+
+### Backend
+- Python (Flask)
+
+### Database
+- MongoDB Atlas ☁️
+
+---
