@@ -22,7 +22,7 @@ function login() {
     let username = document.getElementById("username").value;
     let password = document.getElementById("password").value;
 
-    fetch("http://127.0.0.1:5000/login", {
+    fetch("https://aman-render.onrender.com/login", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
