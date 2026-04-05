@@ -7,7 +7,7 @@ function addToCart(name, price) {
         return;
     }
 
-    fetch("https://aman-renderr.onrender.com/add_to_cart", {
+    fetch("https://aman-render.onrender.com/add_to_cart", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
@@ -24,7 +24,7 @@ function addToCart(name, price) {
 function loadCart() {
     let user = localStorage.getItem("loggedInUser");
 
-    fetch("https://aman-renderr.onrender.com/get_cart", {
+    fetch("https://aman-render.onrender.com/get_cart", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
