@@ -1,3 +1,4 @@
+#broken and fixing
 # 🛒 Aman Electronics - Full Stack E-Commerce Website
 
 🚀 A modern full-stack e-commerce web application built using **HTML, CSS, JavaScript, Flask, and MongoDB Atlas**.
