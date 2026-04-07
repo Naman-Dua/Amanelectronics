@@ -1,67 +1,57 @@
-function addToCart(name, price) {
+import { db } from "./firebase.js";
+import { collection, addDoc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+import { getDocs } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+import { deleteDoc, doc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+async function addToCart(name, price) {
     let user = localStorage.getItem("loggedInUser");
 
     if (!user) {
-        alert("Please login first 🔐");
+        alert("Login first 🔐");
         window.location.href = "login.html";
         return;
     }
 
-    fetch("https://aman-render.onrender.com/add_to_cart", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-            username: user,
-            name: name,
-            price: price
-        })
-    })
-    .then(res => res.json())
-    .then(data => alert(data.message));
+    await addDoc(collection(db, "cart"), {
+        username: user,
+        name: name,
+        price: price
+    });
+
+    alert("Added to cart 🛒");
 }
-function loadCart() {
+async function loadCart() {
     let user = localStorage.getItem("loggedInUser");
 
-    fetch("https://aman-render.onrender.com/get_cart", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify({ username: user })
-    })
-    .then(res => res.json())
-    .then(cart => {
-        let cartDiv = document.getElementById("cart-items");
-        let total = 0;
+    let querySnapshot = await getDocs(collection(db, "cart"));
 
-        cartDiv.innerHTML = "";
+    let cartDiv = document.getElementById("cart-items");
+    let total = 0;
 
-        cart.forEach((item) => {
+    cartDiv.innerHTML = "";
+
+    querySnapshot.forEach((d) => {
+        let item = d.data();
+
+        if (item.username === user) {
             total += item.price;
 
             cartDiv.innerHTML += `
                 <div class="cart-item">
                     <span>${item.name}</span>
                     <span>₹${item.price}</span>
+                    <button onclick="removeItem('${d.id}')">❌</button>
                 </div>
             `;
-        });
-
-        document.getElementById("total").innerText = "Total: ₹" + total;
+        }
     });
-}// REMOVE ITEM
-function removeItem(index) {
-    let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-    cart.splice(index, 1);
-
-    localStorage.setItem("cart", JSON.stringify(cart));
-
-    loadCart();
+    document.getElementById("total").innerText = "Total: ₹" + total;
 }
-
+// REMOVE ITEM
+async function removeItem(id) {
+    await deleteDoc(doc(db, "cart", id));
+    loadCart(); // refresh UI
+}
 // CHECKOUT
 function checkout() {
     document.getElementById("payment-modal").style.display = "flex";
@@ -86,3 +76,4 @@ function processPayment() {
 
     }, 2000);
 }
+window.removeItem = removeItem;

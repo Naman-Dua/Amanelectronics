@@ -1,42 +1,41 @@
+import { db } from "./firebase.js";
+import { collection, addDoc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+import { getDocs } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 // SIGNUP
-function signup() {
+async function signup() {
     let username = document.getElementById("username").value;
     let password = document.getElementById("password").value;
 
-    fetch("https://aman-render.onrender.com/signup", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify({ username, password })
-    })
-    .then(res => res.json())
-    .then(data => {
-        alert(data.message);
-        window.location.href = "login.html";
+    await addDoc(collection(db, "users"), {
+        username: username,
+        password: password
     });
-}
 
+    alert("Signup successful ✅");
+    window.location.href = "login.html";
+}
 // LOGIN
-function login() {
+async function login() {
     let username = document.getElementById("username").value;
     let password = document.getElementById("password").value;
 
-    fetch("https://aman-render.onrender.com/login", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify({ username, password })
-    })
-    .then(res => res.json())
-    .then(data => {
-        if (data.status === "success") {
-            localStorage.setItem("loggedInUser", username);
-            alert("Login successful ✅");
-            window.location.href = "index.html";
-        } else {
-            alert("Invalid login ❌");
+    let querySnapshot = await getDocs(collection(db, "users"));
+
+    let found = false;
+
+    querySnapshot.forEach((doc) => {
+        let user = doc.data();
+
+        if (user.username === username && user.password === password) {
+            found = true;
         }
     });
+
+    if (found) {
+        localStorage.setItem("loggedInUser", username);
+        alert("Login successful ✅");
+        window.location.href = "index.html";
+    } else {
+        alert("Invalid credentials ❌");
+    }
 }

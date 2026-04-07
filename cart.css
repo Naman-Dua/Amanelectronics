@@ -3,7 +3,34 @@
     padding: 0;
     box-sizing: border-box;
 }
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(255,255,255,0.05);
+    padding: 12px;
+    margin: 10px 0;
+    border-radius: 10px;
+    transition: 0.3s;
+}
 
+.cart-item:hover {
+    transform: scale(1.02);
+    box-shadow: 0 0 10px rgba(0,0,0,0.4);
+}
+
+.cart-item button {
+    background: red;
+    border: none;
+    color: white;
+    padding: 6px 10px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.cart-item button:hover {
+    background: darkred;
+}
 body {
     font-family: 'Segoe UI', sans-serif;
     background: linear-gradient(135deg, #020617, #0f172a);

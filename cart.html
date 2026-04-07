@@ -23,7 +23,10 @@
         <button class="checkout-btn" onclick="checkout()">Checkout</button>
     </div>
 
-    <script src="script.js"></script>
+ <script type="module">
+    import { loadCart } from "./script.js";
+    loadCart();
+</script>
 <div id="payment-modal" class="modal">
     <div class="modal-content">
         <h2>💳 Payment</h2>
