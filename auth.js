@@ -39,3 +39,5 @@ async function login() {
         alert("Invalid credentials ❌");
     }
 }
+window.signup = signup;
+window.login = login;
