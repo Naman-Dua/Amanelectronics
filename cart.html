@@ -5,15 +5,15 @@
     <link rel="stylesheet" href="cart.css">
 </head>
 
-<body onload="loadCart()">
+<body>
 
     <div class="container">
-		<a href="index.html" style="
-    color:#22c55e;
-    text-decoration:none;
-    display:inline-block;
-    margin-bottom:10px;
-">⬅ Continue Shopping</a>
+        <a href="index.html" style="
+            color:#22c55e;
+            text-decoration:none;
+            display:inline-block;
+            margin-bottom:10px;
+        ">⬅ Continue Shopping</a>
         <h1>🛒 Your Cart</h1>
 
         <div id="cart-items"></div>
@@ -23,21 +23,96 @@
         <button class="checkout-btn" onclick="checkout()">Checkout</button>
     </div>
 
- <script type="module">
-    import { loadCart } from "./script.js";
-    loadCart();
-</script>
-<div id="payment-modal" class="modal">
-    <div class="modal-content">
-        <h2>💳 Payment</h2>
+    <div id="payment-modal" class="modal">
+        <div class="modal-content">
+            <h2>💳 Payment</h2>
 
-        <input type="text" placeholder="Card Number">
-        <input type="text" placeholder="Expiry (MM/YY)">
-        <input type="text" placeholder="CVV">
+            <input type="text" placeholder="Card Number">
+            <input type="text" placeholder="Expiry (MM/YY)">
+            <input type="text" placeholder="CVV">
 
-        <button onclick="processPayment()">Pay Now</button>
-        <button onclick="closeModal()">Cancel</button>
+            <button onclick="processPayment()">Pay Now</button>
+            <button onclick="closeModal()">Cancel</button>
+        </div>
     </div>
-</div>
+
+    <!-- Load script.js as module, it will auto-call loadCart on page load -->
+    <script type="module" src="script.js"></script>
+
+    <!-- Auto-trigger loadCart once module is ready -->
+    <script type="module">
+        import { db } from "./firebase.js";
+        import { collection, getDocs, deleteDoc, doc } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+
+        async function loadCart() {
+            let user = localStorage.getItem("loggedInUser");
+
+            if (!user) {
+                alert("Please login to view cart 🔐");
+                window.location.href = "login.html";
+                return;
+            }
+
+            let querySnapshot = await getDocs(collection(db, "cart"));
+            let cartDiv = document.getElementById("cart-items");
+            let total = 0;
+
+            cartDiv.innerHTML = "";
+
+            querySnapshot.forEach((d) => {
+                let item = d.data();
+
+                if (item.username === user) {
+                    total += item.price;
+                    cartDiv.innerHTML += `
+                        <div class="cart-item">
+                            <span>${item.name}</span>
+                            <span>₹${item.price}</span>
+                            <button onclick="removeItem('${d.id}')">❌</button>
+                        </div>
+                    `;
+                }
+            });
+
+            document.getElementById("total").innerText = "Total: ₹" + total;
+        }
+
+        async function removeItem(id) {
+            await deleteDoc(doc(db, "cart", id));
+            loadCart();
+        }
+
+        function checkout() {
+            document.getElementById("payment-modal").style.display = "flex";
+        }
+
+        function closeModal() {
+            document.getElementById("payment-modal").style.display = "none";
+        }
+
+        function processPayment() {
+            let modal = document.querySelector(".modal-content");
+            modal.innerHTML = "<h2>Processing Payment... ⏳</h2>";
+
+            setTimeout(() => {
+                modal.innerHTML = "<h2>Payment Successful ✅</h2>";
+                localStorage.removeItem("cart");
+
+                setTimeout(() => {
+                    window.location.href = "index.html";
+                }, 1500);
+            }, 2000);
+        }
+
+        // Expose to global
+        window.removeItem = removeItem;
+        window.checkout = checkout;
+        window.closeModal = closeModal;
+        window.processPayment = processPayment;
+
+        // Run on page load
+        loadCart();
+    </script>
+
 </body>
 </html>

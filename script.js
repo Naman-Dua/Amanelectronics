@@ -1,7 +1,7 @@
 import { db } from "./firebase.js";
-import { collection, addDoc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
-import { getDocs } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
-import { deleteDoc, doc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+import { collection, addDoc, getDocs, deleteDoc, doc } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+
+// ADD TO CART
 async function addToCart(name, price) {
     let user = localStorage.getItem("loggedInUser");
 
@@ -19,8 +19,16 @@ async function addToCart(name, price) {
 
     alert("Added to cart 🛒");
 }
+
+// LOAD CART
 async function loadCart() {
     let user = localStorage.getItem("loggedInUser");
+
+    if (!user) {
+        alert("Please login to view cart 🔐");
+        window.location.href = "login.html";
+        return;
+    }
 
     let querySnapshot = await getDocs(collection(db, "cart"));
 
@@ -47,15 +55,18 @@ async function loadCart() {
 
     document.getElementById("total").innerText = "Total: ₹" + total;
 }
+
 // REMOVE ITEM
 async function removeItem(id) {
     await deleteDoc(doc(db, "cart", id));
-    loadCart(); // refresh UI
+    loadCart();
 }
+
 // CHECKOUT
 function checkout() {
     document.getElementById("payment-modal").style.display = "flex";
 }
+
 function closeModal() {
     document.getElementById("payment-modal").style.display = "none";
 }
@@ -67,7 +78,6 @@ function processPayment() {
 
     setTimeout(() => {
         modal.innerHTML = "<h2>Payment Successful ✅</h2>";
-
         localStorage.removeItem("cart");
 
         setTimeout(() => {
@@ -76,4 +86,11 @@ function processPayment() {
 
     }, 2000);
 }
+
+// Expose all functions to global scope so onclick works in HTML
+window.addToCart = addToCart;
+window.loadCart = loadCart;
 window.removeItem = removeItem;
+window.checkout = checkout;
+window.closeModal = closeModal;
+window.processPayment = processPayment;
