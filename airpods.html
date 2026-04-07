@@ -2,13 +2,12 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
     <link href="zoo.css" rel="stylesheet">
     <title>Buy Airpods</title>
 </head>
-<body>
+<body class="bg-white">
     <header class="text-gray-400 bg-gray-900 body-font">
         <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
           <a class="flex title-font font-medium items-center text-white mb-4 md:mb-0">
@@ -22,91 +21,41 @@
             <a href="contact.us.html" class="mr-5 hover:text-white">Contact Us</a>
             <a href="Aboutus.html" class="mr-5 hover:text-white">About us</a>
           </nav>
-          <a href="cart.html">
+          <a href="cart.html" class="text-white hover:text-yellow-500">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z">
-              </path>
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path>
             </svg>
           </a>
         </div>
     </header>
-    <hr>
 
     <section class="text-gray-600 body-font overflow-hidden">
         <div class="container px-5 py-24 mx-auto">
           <div class="lg:w-4/5 mx-auto flex flex-wrap">
-
-            <!-- Image Zoom -->
-            <img id="myImg" src="71jbPksO0OL._SL1500_.jpg" alt="Airpods" width="500" height="300">
-            <div id="myModal" class="modal">
-               <img class="modal-content" id="img01">
-               <div id="caption"></div>
-            </div>
-            <script>
-                var modal = document.getElementById('myModal');
-                var img = document.getElementById('myImg');
-                var modalImg = document.getElementById("img01");
-                var captionText = document.getElementById("caption");
-                img.onclick = function(){
-                    modal.style.display = "block";
-                    modalImg.src = this.src;
-                    modalImg.alt = this.alt;
-                    captionText.innerHTML = this.alt;
-                }
-                modal.onclick = function() {
-                    img01.className += " out";
-                    setTimeout(function() {
-                        modal.style.display = "none";
-                        img01.className = "modal-content";
-                    }, 400);
-                }
-            </script>
-
+            <img id="myImg" src="71jbPksO0OL._SL1500_.jpg" alt="Airpods" class="lg:w-1/2 w-full lg:h-auto h-64 object-cover object-center rounded border border-gray-200">
+            
             <div class="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
               <h2 class="text-sm title-font text-gray-500 tracking-widest">Devialet</h2>
-              <h1 class="text-gray-900 text-3xl title-font font-medium mb-1">Devialet Gemini True Wireless Bluetooth Earbuds with 24 Hours Playtime</h1>
-              <div class="flex mb-4">
-                <span class="flex items-center">
-                  <svg fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 text-indigo-500" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>
-                  <svg fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 text-indigo-500" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>
-                  <svg fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 text-indigo-500" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>
-                  <svg fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 text-indigo-500" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>
-                  <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 text-indigo-500" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>
-                  <span class="text-gray-600 ml-3">4 Reviews</span>
-                </span>
-              </div>
-              <p class="leading-relaxed">
-                Brand - Devialet<br>
-                Colour - Matte Black<br>
-                Connector Type - Wireless<br>
-                Model Name - Gemini<br>
-                Form Factor - In Ear
-              </p>
+              <h1 class="text-gray-900 text-3xl title-font font-medium mb-1">Devialet Gemini True Wireless Earbuds</h1>
+              <p class="leading-relaxed">High-fidelity sound with 24 hours of total playtime and active noise cancellation.</p>
+              
               <div class="flex mt-6 items-center pb-5 border-b-2 border-gray-100 mb-5">
-                <div class="flex">
-                  <span class="mr-3">Color</span>
-                  <button class="border-2 border-gray-300 rounded-full w-6 h-6 focus:outline-none"></button>
-                  <button class="border-2 border-gray-300 ml-1 bg-gray-700 rounded-full w-6 h-6 focus:outline-none"></button>
-                  <button class="border-2 border-gray-300 ml-1 bg-indigo-500 rounded-full w-6 h-6 focus:outline-none"></button>
-                </div>
+                <span class="mr-3">Color</span>
+                <button class="border-2 border-gray-300 rounded-full w-6 h-6 focus:outline-none"></button>
+                <button class="border-2 border-gray-300 ml-1 bg-gray-700 rounded-full w-6 h-6 focus:outline-none"></button>
               </div>
+
               <div class="flex">
                 <span class="title-font font-medium text-2xl text-gray-900">₹33,399</span>
-                <button class="flex ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded" onclick="addToCart('AirPods', 33399)">Purchase</button>
-                <button class="rounded-full w-10 h-10 bg-gray-200 p-0 border-0 inline-flex items-center justify-center text-gray-500 ml-4">
-                  <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
-                    <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"></path>
-                  </svg>
+                <button onclick="addToCart('Devialet Gemini', 33399)" class="flex ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded">
+                    Add to Cart
                 </button>
               </div>
             </div>
-
           </div>
         </div>
     </section>
 
-    <!-- This loads addToCart and exposes it to window -->
     <script type="module" src="script.js"></script>
-
 </body>
 </html>
